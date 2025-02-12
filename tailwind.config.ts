@@ -13,7 +13,7 @@ export default {
 				jeju: ["var(--font-jeju-myeongjo)", "Nanum Myeongjo", "serif"],
 			},
 			colors: {
-				background: "hsl(var(--background))",
+				background: "var(--background)",
 				foreground: "hsl(var(--foreground))",
 				card: {
 					DEFAULT: "hsl(var(--card))",
@@ -24,12 +24,12 @@ export default {
 					foreground: "hsl(var(--popover-foreground))",
 				},
 				primary: {
-					DEFAULT: "hsl(var(--primary))",
-					foreground: "hsl(var(--primary-foreground))",
+					DEFAULT: "var(--primary)",
+					foreground: "var(--primary-foreground)",
 				},
 				secondary: {
-					DEFAULT: "hsl(var(--secondary))",
-					foreground: "hsl(var(--secondary-foreground))",
+					DEFAULT: "var(--secondary)",
+					foreground: "var(--secondary-foreground)",
 				},
 				muted: {
 					DEFAULT: "hsl(var(--muted))",
@@ -37,14 +37,14 @@ export default {
 				},
 				accent: {
 					DEFAULT: "hsl(var(--accent))",
-					foreground: "hsl(var(--accent-foreground))",
+					foreground: "var(--accent-foreground)",
 				},
 				destructive: {
 					DEFAULT: "hsl(var(--destructive))",
 					foreground: "hsl(var(--destructive-foreground))",
 				},
 				border: "hsl(var(--border))",
-				input: "hsl(var(--input))",
+				input: "var(--input)",
 				ring: "hsl(var(--ring))",
 				chart: {
 					"1": "hsl(var(--chart-1))",
@@ -53,11 +53,12 @@ export default {
 					"4": "hsl(var(--chart-4))",
 					"5": "hsl(var(--chart-5))",
 				},
+				nav: "rgba(5, 37, 44, 0.40)",
 			},
 			borderRadius: {
-				lg: "var(--radius)",
-				md: "calc(var(--radius) - 2px)",
-				sm: "calc(var(--radius) - 4px)",
+				lg: "calc(var(--radius) + 2px)",
+				md: "var(--radius)",
+				sm: "calc(var(--radius) - 2px)",
 			},
 		},
 	},

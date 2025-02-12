@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Nanum_Myeongjo } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/header";
 
 const jeju = Nanum_Myeongjo({
 	variable: "--font-jeju-myeongjo",
@@ -20,7 +21,10 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${jeju.className} antialiased`}>{children}</body>
+			<body className={`${jeju.className} antialiased`}>
+				<Header />
+				<main>{children}</main>
+			</body>
 		</html>
 	);
 }
