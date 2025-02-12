@@ -16,7 +16,7 @@ export default function Home() {
 	}, []);
 
 	return (
-		<div className="border border-border rounded-[40px] bg-card p-12 space-y-8">
+		<div className="border border-border rounded-[40px] bg-card p-12 space-y-8 max-w-[700px] mx-auto">
 			<div className="space-y-3">
 				<div className="flex items-center justify-between">
 					<h1 className="text-[32px] font-normal">
@@ -50,9 +50,14 @@ export default function Home() {
 					setSelectedSeat={setSelectedSeat}
 				/>
 				<TicketNum ticketNum={ticketNum} setTicketNum={setTicketNum} />
-				<div>
-					<Button variant={"outline"}>Cancel</Button>
-					<Button>Next</Button>
+				<div className="w-full flex gap-6">
+					<Button
+						variant={"outline"}
+						className="w-full text-primary leading-[150%]"
+					>
+						Cancel
+					</Button>
+					<Button className="w-full">Next</Button>
 				</div>
 			</div>
 		</div>
