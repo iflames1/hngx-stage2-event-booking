@@ -21,9 +21,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${jeju.className} antialiased`}>
+			<body className={`${jeju.className} w-full mx-auto antialiased`}>
 				<Header />
-				<main>{children}</main>
+				<main className="sm:pt-[102px] pt-[80px]">{children}</main>
 			</body>
 		</html>
 	);

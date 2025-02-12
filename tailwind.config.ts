@@ -12,6 +12,9 @@ export default {
 			fontFamily: {
 				jeju: ["var(--font-jeju-myeongjo)", "Nanum Myeongjo", "serif"],
 			},
+			fontSize: {
+				base: ["1rem", "1.25"], // 1rem font size with 1.2 line-height
+			},
 			colors: {
 				background: "var(--background)",
 				foreground: "hsl(var(--foreground))",

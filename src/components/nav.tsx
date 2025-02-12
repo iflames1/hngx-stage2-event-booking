@@ -13,7 +13,7 @@ export default function Nav() {
 	];
 	console.log("pathname ", pathname);
 	return (
-		<nav className="flex gap-4 text-base font-normal rounded-md text-accent-foreground">
+		<nav className="sm:flex gap-4 text-base font-normal rounded-md text-accent-foreground hidden">
 			{navs.map(({ href, label }) => (
 				<Button
 					key={href}
