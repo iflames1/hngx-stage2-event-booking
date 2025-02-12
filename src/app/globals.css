@@ -11,7 +11,7 @@
 			),
 			#02191d;
 		--foreground: #fff;
-		--card: 0 0% 100%;
+		--card: #041e23;
 		--card-foreground: 240 10% 3.9%;
 		--popover: 0 0% 100%;
 		--popover-foreground: 240 10% 3.9%;
@@ -20,12 +20,12 @@
 		--secondary: #fff;
 		--secondary-foreground: #0a0c11;
 		--muted: 240 4.8% 95.9%;
-		--muted-foreground: 240 3.8% 46.1%;
+		--muted-foreground: #fafafa;
 		--accent: 240 4.8% 95.9%;
 		--accent-foreground: #b3b3b3;
 		--destructive: 0 84.2% 60.2%;
 		--destructive-foreground: 0 0% 98%;
-		--border: 240 5.9% 90%;
+		--border: #0e464f;
 		--input: #07373f;
 		--ring: 240 10% 3.9%;
 		--chart-1: 12 76% 61%;
@@ -47,5 +47,15 @@
 		background-repeat: no-repeat;
 		background-size: cover;
 		min-height: 100svh;
+	}
+	.banner {
+		background: radial-gradient(
+				57.42% 106.59% at 14.02% 32.06%,
+				rgba(36, 160, 181, 0.2) 0%,
+				rgba(36, 160, 181, 0) 100%
+			),
+			rgba(10, 12, 17, 0.1);
+		background-size: cover;
+		background-position: center;
 	}
 }

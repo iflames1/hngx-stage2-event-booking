@@ -11,6 +11,8 @@ export default {
 		extend: {
 			fontFamily: {
 				jeju: ["var(--font-jeju-myeongjo)", "Nanum Myeongjo", "serif"],
+				roboto: ["var(--font-roboto)", "Roboto", "sans-serif"],
+				road: ["var(--font-road-rage)", "Road Rage", "cursive"],
 			},
 			fontSize: {
 				base: ["1rem", "1.25"], // 1rem font size with 1.2 line-height
@@ -19,8 +21,8 @@ export default {
 				background: "var(--background)",
 				foreground: "hsl(var(--foreground))",
 				card: {
-					DEFAULT: "hsl(var(--card))",
-					foreground: "hsl(var(--card-foreground))",
+					DEFAULT: "var(--card)",
+					foreground: "var(--card-foreground)",
 				},
 				popover: {
 					DEFAULT: "hsl(var(--popover))",
@@ -46,7 +48,7 @@ export default {
 					DEFAULT: "hsl(var(--destructive))",
 					foreground: "hsl(var(--destructive-foreground))",
 				},
-				border: "hsl(var(--border))",
+				border: "var(--border)",
 				input: "var(--input)",
 				ring: "hsl(var(--ring))",
 				chart: {
