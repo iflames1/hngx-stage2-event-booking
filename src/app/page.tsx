@@ -1,11 +1,14 @@
 "use client";
-import SelectTrip from "@/components/select-trip";
+import SelectSeat from "@/components/select-seat";
+import TicketNum from "@/components/ticket-num";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { useEffect, useState } from "react";
 
 export default function Home() {
 	const [progress, setProgress] = useState(33);
+	const [selectedSeat, setSelectedSeat] = useState("free");
+	const [ticketNum, setTicketNum] = useState("1");
 
 	useEffect(() => {
 		const timer = setTimeout(() => setProgress(33), 500);
@@ -42,10 +45,11 @@ export default function Home() {
 					</p>
 				</div>
 				<div className="bg-input h-1 w-full" />
-				<SelectTrip />
-				<div>
-					<p> Number of Tickets</p>
-				</div>
+				<SelectSeat
+					selectedSeat={selectedSeat}
+					setSelectedSeat={setSelectedSeat}
+				/>
+				<TicketNum ticketNum={ticketNum} setTicketNum={setTicketNum} />
 				<div>
 					<Button variant={"outline"}>Cancel</Button>
 					<Button>Next</Button>

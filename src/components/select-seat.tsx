@@ -1,13 +1,21 @@
 import React from "react";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 
-export default function SelectTrip() {
+interface SelectSeatProps {
+	selectedSeat: string;
+	setSelectedSeat: (value: string) => void;
+}
+
+export default function SelectSeat({
+	selectedSeat,
+	setSelectedSeat,
+}: SelectSeatProps) {
 	return (
 		<div className="space-y-2">
 			<p className="font-roboto font-normal text-base leading-[150%]">
 				Select Ticket Type:
 			</p>
-			<Tabs>
+			<Tabs value={selectedSeat} onValueChange={setSelectedSeat}>
 				<TabsList className="font-roboto">
 					<TabsTrigger value="free" className="space-y-3">
 						<h1 className="font-roboto text-2xl font-semibold leading-[110%]">
