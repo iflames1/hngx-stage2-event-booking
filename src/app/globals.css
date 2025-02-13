@@ -10,7 +10,7 @@
 				rgba(36, 160, 181, 0) 100%
 			),
 			#02191d;
-		--foreground: #fff;
+		--foreground: #ffffff;
 		--card: #041e23;
 		--card-foreground: 240 10% 3.9%;
 		--popover: #052228;
@@ -57,5 +57,18 @@
 			rgba(10, 12, 17, 0.1);
 		background-size: cover;
 		background-position: center;
+	}
+	.clip-curve {
+		clip-path: path(
+			"M0,15
+			Q15,0 30,15
+			L70,15
+			Q85,0 100,15
+			L100,70
+			Q85,85 70,100
+			L30,100
+			Q15,85 0,70
+			Z"
+		);
 	}
 }

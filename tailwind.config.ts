@@ -61,6 +61,7 @@ export default {
 				},
 				nav: "rgba(5, 37, 44, 0.40)",
 				upload: "rgba(36, 160, 181, 0.50)",
+				ticket: "rgba(3, 30, 33, 0.10)",
 			},
 			borderRadius: {
 				lg: "calc(var(--radius) + 2px)",
