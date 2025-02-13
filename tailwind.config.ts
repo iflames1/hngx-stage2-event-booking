@@ -13,6 +13,7 @@ export default {
 				jeju: ["var(--font-jeju-myeongjo)", "Nanum Myeongjo", "serif"],
 				roboto: ["var(--font-roboto)", "Roboto", "sans-serif"],
 				road: ["var(--font-road-rage)", "Road Rage", "cursive"],
+				alatsi: ["var(--font-alatsi)", "Alatsi", "sans-serif"],
 			},
 			fontSize: {
 				base: ["1rem", "1.25"], // 1rem font size with 1.2 line-height

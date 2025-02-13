@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nanum_Myeongjo, Roboto, Road_Rage } from "next/font/google";
+import { Nanum_Myeongjo, Roboto, Road_Rage, Alatsi } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 
@@ -20,6 +20,11 @@ const road = Road_Rage({
 	subsets: ["latin"],
 	weight: ["400"],
 });
+const alatsi = Alatsi({
+	variable: "--font-alatsi",
+	subsets: ["latin"],
+	weight: ["400"],
+});
 
 export const metadata: Metadata = {
 	title: "Event Manager",
@@ -34,7 +39,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${jeju.className} ${roboto.variable} ${road.variable} w-full mx-auto antialiased`}
+				className={`${jeju.className} ${roboto.variable} ${road.variable} ${alatsi.variable} w-full mx-auto antialiased`}
 			>
 				<Header />
 				<main className="sm:pt-[102px] pt-[80px]">{children}</main>

@@ -3,6 +3,7 @@ import { useState } from "react";
 import TicketSelection from "./ticket-selection";
 import AttendeeDetails from "./attendee-details";
 import TicketProgress from "./ticket-progress";
+import Ticket from "./ticket";
 
 export default function Home() {
 	const [step, setStep] = useState(1); // Track step count (1 to 3)
@@ -20,7 +21,8 @@ export default function Home() {
 					setTicketNum={setTicketNum}
 					setStep={setStep}
 				/>*/}
-				<AttendeeDetails />
+				{/*<AttendeeDetails />*/}
+				<Ticket />
 			</div>
 		</div>
 	);

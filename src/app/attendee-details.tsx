@@ -74,10 +74,10 @@ export default function AttendeeDetails() {
 						control={form.control}
 						name="avatar"
 						render={({ field }) => (
-							<FormItem className="p-6 border border-input rounded-3xl bg-popover">
+							<FormItem className="p-6 pb-12 space-y-8 border border-input rounded-3xl bg-popover">
 								<FormLabel>Upload Profile Photo</FormLabel>
 								<FormControl className="">
-									<>
+									<div className="sm:bg-black/20 flex justify-center items-center w-full h-[200px]">
 										<label className="border-4 border-upload bg-border p-6 rounded-[32px] cursor-pointer flex flex-col items-center justify-center size-60 mx-auto ">
 											<div className="flex flex-col items-center justify-center space-y-4">
 												<UploadCloud className="size-8 " />
@@ -100,7 +100,7 @@ export default function AttendeeDetails() {
 												className="mt-3 w-20 h-20 rounded-lg"
 											/>
 										)}
-									</>
+									</div>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -127,17 +127,20 @@ export default function AttendeeDetails() {
 						control={form.control}
 						name="email"
 						render={({ field }) => (
-							<FormItem className="relative">
+							<FormItem>
 								<FormLabel>Enter Your Email *</FormLabel>
-								<FormControl className="relative flex items-center">
-									<>
-										{/*<MdMailOutline className="absolute left-3 bottom-3 size-6" />*/}
+								<FormControl>
+									<div className="flex w-full items-center rounded-xl border border-input bg-transparent p-3 transition-colors focus-within:ring-1 focus-within:ring-ring">
+										<MdMailOutline
+											className="size-6 focus:outline-none focus:ring-0"
+											tabIndex={-1}
+										/>
 										<Input
 											type="email"
 											{...field}
-											//className="pl-10"
+											className="border-none p-0 pl-2 flex-1 bg-transparent focus-visible:ring-0"
 										/>
-									</>
+									</div>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -157,7 +160,7 @@ export default function AttendeeDetails() {
 							</FormItem>
 						)}
 					/>
-					<div className="flex flex-col sm:flex-row gap-4">
+					<div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
 						<Button
 							type="submit"
 							disabled={!form.formState.isValid}
