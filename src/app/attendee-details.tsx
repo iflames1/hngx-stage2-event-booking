@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { UploadCloud } from "lucide-react";
-import Image from "next/image";
 import { MdMailOutline } from "react-icons/md";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -28,20 +27,38 @@ const formSchema = z.object({
 
 export default function AttendeeDetails() {
 	const [imagePreview, setImagePreview] = useState<string | null>(null);
-	const form = useForm({
+	//const [imagePreview, setImagePreview] = useState<string>(
+	//	"https://res.cloudinary.com/dapbvli1v/image/upload/v1739459686/dp_cc2rdu.jpg"
+	//);
+	const [isUploading, setIsUploading] = useState<boolean>(false);
+
+	const form = useForm<FormData>({
 		resolver: zodResolver(formSchema),
 		mode: "onChange",
+		defaultValues: {
+			name: "",
+			email: "",
+			avatar: "",
+			specialRequest: "",
+		},
 	});
 
 	const handleImageUpload = async (
 		event: React.ChangeEvent<HTMLInputElement>
 	) => {
+		setIsUploading(true);
 		const file = event.target.files?.[0];
-		if (!file) return;
+		if (!file) {
+			console.log("No file selected or unsupported file type.");
+			setIsUploading(false);
+			return;
+		}
+
+		console.log("Uploading file:", file.name, file.type, file.size);
 
 		const formData = new FormData();
 		formData.append("file", file);
-		formData.append("upload_preset", "your_upload_preset");
+		formData.append("upload_preset", "chill guy");
 
 		try {
 			const response = await fetch(
@@ -51,17 +68,36 @@ export default function AttendeeDetails() {
 					body: formData,
 				}
 			);
+
+			if (!response.ok) {
+				throw new Error(`HTTP error! Status: ${response.status}`);
+			}
+
 			const data = await response.json();
-			form.setValue("avatar", data.secure_url);
+			console.log("Upload successful:", data);
+
+			if (!data.secure_url) {
+				throw new Error("No secure_url returned from Cloudinary");
+			}
+
+			form.setValue("avatar", data.secure_url, { shouldValidate: true });
 			setImagePreview(data.secure_url);
 		} catch (error) {
 			console.error("Image upload failed", error);
+			alert("Image upload failed. Please try again.");
+		} finally {
+			setIsUploading(false);
 		}
 	};
 
-	const onSubmit = (data: any) => {
+	type FormData = z.infer<typeof formSchema>;
+
+	const onSubmit = (data: FormData) => {
 		console.log("Form Submitted:", data);
 	};
+
+	console.log(form.formState.errors);
+	console.log(form.getValues());
 
 	return (
 		<div className="sm:p-6 sm:border border-border rounded-[32px] sm:bg-[#08252B]">
@@ -73,17 +109,26 @@ export default function AttendeeDetails() {
 					<FormField
 						control={form.control}
 						name="avatar"
-						render={({ field }) => (
+						render={({}) => (
 							<FormItem className="p-6 pb-12 space-y-8 border border-input rounded-3xl bg-popover">
 								<FormLabel>Upload Profile Photo</FormLabel>
 								<FormControl className="">
 									<div className="sm:bg-black/20 flex justify-center items-center w-full h-[200px]">
-										<label className="border-4 border-upload bg-border p-6 rounded-[32px] cursor-pointer flex flex-col items-center justify-center size-60 mx-auto ">
-											<div className="flex flex-col items-center justify-center space-y-4">
+										<label className="border-4 border-upload bg-border  rounded-[32px] cursor-pointer flex flex-col items-center justify-center size-60 mx-auto">
+											<div
+												className="flex flex-col items-center justify-center space-y-4 bg-cover bg-center h-full rounded-[32px]"
+												style={{
+													backgroundImage:
+														imagePreview
+															? `url(${imagePreview})`
+															: "none",
+												}}
+											>
 												<UploadCloud className="size-8 " />
-												<span className="text-center">
-													Drag & drop or click to
-													upload
+												<span className="text-center p-6">
+													{isUploading
+														? "Uploading..."
+														: "Drag & drop or click to upload"}
 												</span>
 											</div>
 											<Input
@@ -93,13 +138,6 @@ export default function AttendeeDetails() {
 												onChange={handleImageUpload}
 											/>
 										</label>
-										{imagePreview && (
-											<Image
-												src={imagePreview}
-												alt="Preview"
-												className="mt-3 w-20 h-20 rounded-lg"
-											/>
-										)}
 									</div>
 								</FormControl>
 								<FormMessage />
@@ -164,10 +202,12 @@ export default function AttendeeDetails() {
 						<Button
 							type="submit"
 							disabled={!form.formState.isValid}
+							onClick={() => onSubmit}
 							className="w-full"
 						>
 							Get My Free Ticket
 						</Button>
+
 						<Button variant={"outline"} className="w-full">
 							Back
 						</Button>
