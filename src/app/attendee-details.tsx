@@ -16,6 +16,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { UploadCloud } from "lucide-react";
 import Image from "next/image";
+import { MdMailOutline } from "react-icons/md";
+import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = z.object({
 	name: z.string().min(2, "Name is required").max(100),
@@ -62,10 +64,12 @@ export default function AttendeeDetails() {
 	};
 
 	return (
-		<div className="max-w-md mx-auto p-6 border rounded-lg shadow-lg">
-			<h2 className="text-2xl font-semibold mb-4">Attendee Details</h2>
+		<div className="p-6 border border-border rounded-[32px] bg-[#08252B]">
 			<Form {...form}>
-				<form onSubmit={form.handleSubmit(onSubmit)}>
+				<form
+					onSubmit={form.handleSubmit(onSubmit)}
+					className="space-y-8 font-roboto text-base leading-[150%] font-normal"
+				>
 					<FormField
 						control={form.control}
 						name="avatar"
@@ -100,6 +104,8 @@ export default function AttendeeDetails() {
 						)}
 					/>
 
+					<div className="bg-input h-1 w-full" />
+
 					<FormField
 						control={form.control}
 						name="name"
@@ -107,7 +113,7 @@ export default function AttendeeDetails() {
 							<FormItem>
 								<FormLabel>Enter Your Name</FormLabel>
 								<FormControl>
-									<Input {...field} placeholder="John Doe" />
+									<Input {...field} type="text" />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -118,14 +124,31 @@ export default function AttendeeDetails() {
 						control={form.control}
 						name="email"
 						render={({ field }) => (
-							<FormItem>
+							<FormItem className="relative">
 								<FormLabel>Enter Your Email *</FormLabel>
+								<FormControl className="relative flex items-center">
+									<>
+										{/*<MdMailOutline className="absolute left-3 bottom-3 size-6" />*/}
+										<Input
+											type="email"
+											{...field}
+											//className="pl-10"
+										/>
+									</>
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+
+					<FormField
+						control={form.control}
+						name="specialRequest"
+						render={({ field }) => (
+							<FormItem>
+								<FormLabel>Special Request?</FormLabel>
 								<FormControl>
-									<Input
-										type="email"
-										{...field}
-										placeholder="example@email.com"
-									/>
+									<Textarea {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>

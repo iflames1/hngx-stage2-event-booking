@@ -50,7 +50,7 @@ export default {
 				},
 				border: "var(--border)",
 				input: "var(--input)",
-				ring: "hsl(var(--ring))",
+				ring: "var(--ring)",
 				chart: {
 					"1": "hsl(var(--chart-1))",
 					"2": "hsl(var(--chart-2))",
