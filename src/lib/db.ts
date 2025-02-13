@@ -6,6 +6,8 @@ interface Event1 {
 	email: string;
 	avatar: string;
 	specialRequest?: string;
+	seat: string;
+	ticketNum: string;
 }
 
 const db = new Dexie("EventDB") as Dexie & {
@@ -13,7 +15,7 @@ const db = new Dexie("EventDB") as Dexie & {
 };
 
 db.version(1).stores({
-	event1: "++id, name, email, avatar, specialRequest",
+	event1: "++id, name, email, avatar, specialRequest, seat, ticketNum",
 });
 
 export type { Event1 };

@@ -5,7 +5,11 @@ import { useRef } from "react";
 import html2canvas from "html2canvas";
 import { Loader2 } from "lucide-react";
 
-export default function Ticket() {
+export default function Ticket({
+	setStep,
+}: {
+	setStep: (step: number) => void;
+}) {
 	const ticketRef = useRef<HTMLDivElement>(null);
 	const [isDownloading, setIsDownloading] = useState(false);
 
@@ -48,7 +52,7 @@ export default function Ticket() {
 			</div>
 			<div className="w-full flex flex-col sm:flex-row gap-4 sm:gap-6 font-jeju">
 				<Button
-					onClick={handleDownload}
+					onClick={() => setStep(1)}
 					variant={"outline"}
 					className="w-full"
 				>

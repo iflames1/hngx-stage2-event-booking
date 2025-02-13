@@ -24,13 +24,21 @@ const formSchema = z.object({
 	email: z.string().email("Invalid email"),
 	avatar: z.string().url("Invalid image URL"),
 	specialRequest: z.string().optional(),
+	seat: z.string(),
+	ticketNum: z.string(),
 });
+
+interface AttendeeDetailsProps {
+	setStep: (step: number) => void;
+	seat: string;
+	ticketNum: string;
+}
 
 export default function AttendeeDetails({
 	setStep,
-}: {
-	setStep: (step: number) => void;
-}) {
+	seat,
+	ticketNum,
+}: AttendeeDetailsProps) {
 	const [imagePreview, setImagePreview] = useState<string | null>(null);
 	//const [imagePreview, setImagePreview] = useState<string>(
 	//	"https://res.cloudinary.com/dapbvli1v/image/upload/v1739459686/dp_cc2rdu.jpg"
@@ -46,6 +54,8 @@ export default function AttendeeDetails({
 			email: "",
 			avatar: "",
 			specialRequest: "",
+			seat,
+			ticketNum,
 		},
 	});
 

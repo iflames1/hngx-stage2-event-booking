@@ -23,9 +23,13 @@ export default function Home() {
 						setStep={setStep}
 					/>
 				) : step === 2 ? (
-					<AttendeeDetails setStep={setStep} />
+					<AttendeeDetails
+						setStep={setStep}
+						seat={selectedSeat}
+						ticketNum={ticketNum}
+					/>
 				) : step === 3 ? (
-					<Ticket />
+					<Ticket setStep={setStep} />
 				) : null}
 			</div>
 		</div>

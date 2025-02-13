@@ -11,7 +11,6 @@ export default function Nav() {
 		{ href: "/tickets", label: "Tickets" },
 		{ href: "/about", label: "About" },
 	];
-	console.log("pathname ", pathname);
 	return (
 		<nav className="sm:flex gap-4 text-base font-normal rounded-md text-accent-foreground hidden">
 			{navs.map(({ href, label }) => (
