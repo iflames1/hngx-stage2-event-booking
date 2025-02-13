@@ -20,7 +20,7 @@ export default function TicketSelection({
 }: TicketSelectionProps) {
 	return (
 		<div className="space-y-8 sm:p-6">
-			<div className="banner backdrop-blur-[7px] border-[2px] border-input rounded-3xl py-4 px-6 sm:p-6 text-center sm:space-y-2 flex flex-col justify-between h-[243px] sm:h-full ">
+			<div className="banner backdrop-blur-[7px] border-[2px] border-input rounded-3xl py-4 px-6 sm:p-6 text-center flex flex-col justify-between sm:gap-2 min-h-[243px] sm:min-h-fit sm:h-full ">
 				<div className="space-y-2">
 					<h2 className="font-road text-5xl sm:text-[62px] font-normal leading-[100%]">
 						Techember Fest ”25
