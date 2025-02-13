@@ -1,8 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import TicketPreview from "@/components/ticket-preview";
+import { useRef } from "react";
+import html2canvas from "html2canvas";
+import { Loader2 } from "lucide-react";
 
 export default function Ticket() {
+	const ticketRef = useRef<HTMLDivElement>(null);
+	const [isDownloading, setIsDownloading] = useState(false);
+
+	const handleDownload = async () => {
+		setIsDownloading(true);
+
+		if (!ticketRef.current) return;
+
+		try {
+			const canvas = await html2canvas(ticketRef.current, {
+				scale: 2,
+			});
+			const imgData = canvas.toDataURL("image/png");
+
+			const link = document.createElement("a");
+			link.href = imgData;
+			link.download = "ticket.png";
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+		} catch (error) {
+			console.error("Error generating image:", error);
+		} finally {
+			setIsDownloading(false);
+		}
+	};
+
 	return (
 		<div className="font-roboto text-base leading-[150%] font-normal space-y-6">
 			<div className="space-y-8">
@@ -10,18 +40,32 @@ export default function Ticket() {
 					<h2 className="text-2xl sm:text-[32px] font-alatsi leading-normal">
 						Your Ticket is Booked!
 					</h2>
-					<p>
-						Check your email for a copy or you can{" "}
-						<span className="font-semibold">download</span>
-					</p>
+					<p>Check your email for a copy</p>
 				</div>
-				<TicketPreview />
+				<div ref={ticketRef}>
+					<TicketPreview />
+				</div>
 			</div>
 			<div className="w-full flex flex-col sm:flex-row gap-4 sm:gap-6 font-jeju">
-				<Button variant={"outline"} className="w-full">
+				<Button
+					onClick={handleDownload}
+					variant={"outline"}
+					className="w-full"
+				>
 					Book Another Ticket
 				</Button>
-				<Button className="w-full">Download Ticket</Button>
+				<Button
+					className="w-full"
+					disabled={isDownloading}
+					onClick={handleDownload}
+				>
+					<Loader2
+						className={`animate-spin  ${
+							isDownloading ? "inline-flex" : "hidden"
+						}`}
+					/>
+					{isDownloading ? "Downloading..." : "Download Ticket"}
+				</Button>
 			</div>
 		</div>
 	);

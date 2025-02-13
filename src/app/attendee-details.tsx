@@ -124,7 +124,7 @@ export default function AttendeeDetails({
 								<FormLabel>Upload Profile Photo</FormLabel>
 								<FormControl className="">
 									<div className="sm:bg-black/20 flex justify-center items-center w-full h-[200px]">
-										<label className="border-4 border-upload bg-border  rounded-[32px] cursor-pointer flex flex-col items-center justify-center size-60 mx-auto">
+										<label className="border-4 border-upload bg-border rounded-[32px] cursor-pointer flex flex-col items-center justify-center size-60 mx-auto">
 											<div
 												className="flex flex-col items-center justify-center space-y-4 bg-cover bg-center h-full rounded-[32px]"
 												style={{
@@ -135,7 +135,7 @@ export default function AttendeeDetails({
 												}}
 											>
 												<UploadCloud className="size-8 " />
-												<span className="text-center p-6">
+												<span className="text-center px-6">
 													{isUploading
 														? "Uploading..."
 														: "Drag & drop or click to upload"}
