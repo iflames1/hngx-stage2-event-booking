@@ -1,22 +1,26 @@
-import { db, type Event1 } from "@/lib/db";
+import { type Event1 } from "@/lib/db";
 import { Loader2 } from "lucide-react";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
 
-export default function TicketPreview() {
-	const [eventData, setEventData] = useState<Event1 | null>(null);
+interface TicketPreviewProps {
+	eventData: Event1 | null;
+}
 
-	useEffect(() => {
-		const fetchEventData = async () => {
-			const data = await db.event1.toArray(); // Fetch all events
-			if (data.length > 0) {
-				setEventData(data[data.length - 1]); // Use the first event
-			}
-			console.log(data);
-		};
+export default function TicketPreview({ eventData }: TicketPreviewProps) {
+	//const [eventData, setEventData] = useState<Event1 | null>(null);
 
-		fetchEventData();
-	}, []);
+	//useEffect(() => {
+	//	const fetchEventData = async () => {
+	//		const data = await db.event1.toArray(); // Fetch all events
+	//		if (data.length > 0) {
+	//			setEventData(data[data.length - 1]); // Use the first event
+	//		}
+	//		console.log(data);
+	//	};
+
+	//	fetchEventData();
+	//}, []);
+
 	return (
 		<>
 			{eventData ? (

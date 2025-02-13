@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import TicketPreview from "@/components/ticket-preview";
 import { useRef } from "react";
 import html2canvas from "html2canvas";
 import { Loader2 } from "lucide-react";
+import { db, type Event1 } from "@/lib/db";
 
 export default function Ticket({
 	setStep,
@@ -12,6 +13,19 @@ export default function Ticket({
 }) {
 	const ticketRef = useRef<HTMLDivElement>(null);
 	const [isDownloading, setIsDownloading] = useState(false);
+	const [eventData, setEventData] = useState<Event1 | null>(null);
+
+	useEffect(() => {
+		const fetchEventData = async () => {
+			const data = await db.event1.toArray(); // Fetch all events
+			if (data.length > 0) {
+				setEventData(data[data.length - 1]); // Use the first event
+			}
+			console.log(data);
+		};
+
+		fetchEventData();
+	}, []);
 
 	const handleDownload = async () => {
 		setIsDownloading(true);
@@ -47,7 +61,7 @@ export default function Ticket({
 					<p>Check your email for a copy</p>
 				</div>
 				<div ref={ticketRef}>
-					<TicketPreview />
+					<TicketPreview eventData={eventData} />
 				</div>
 			</div>
 			<div className="w-full flex flex-col sm:flex-row gap-4 sm:gap-6 font-jeju">

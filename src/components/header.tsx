@@ -27,8 +27,11 @@ export default function Header() {
 				<Button
 					variant={"secondary"}
 					className="sm:py-4 py-3 sm:text-base text-sm"
+					asChild
 				>
-					MY TICKETS <IoIosArrowRoundForward size={16} />
+					<Link href={"/tickets"}>
+						MY TICKETS <IoIosArrowRoundForward size={16} />
+					</Link>
 				</Button>
 			</div>
 		</header>
