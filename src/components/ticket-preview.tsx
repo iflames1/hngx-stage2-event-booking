@@ -10,8 +10,9 @@ export default function TicketPreview() {
 		const fetchEventData = async () => {
 			const data = await db.event1.toArray(); // Fetch all events
 			if (data.length > 0) {
-				setEventData(data[0]); // Use the first event
+				setEventData(data[data.length - 1]); // Use the first event
 			}
+			console.log(data);
 		};
 
 		fetchEventData();
