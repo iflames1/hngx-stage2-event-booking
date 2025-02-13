@@ -64,7 +64,7 @@ export default function AttendeeDetails() {
 	};
 
 	return (
-		<div className="p-6 border border-border rounded-[32px] bg-[#08252B]">
+		<div className="sm:p-6 sm:border border-border rounded-[32px] sm:bg-[#08252B]">
 			<Form {...form}>
 				<form
 					onSubmit={form.handleSubmit(onSubmit)}
@@ -74,15 +74,18 @@ export default function AttendeeDetails() {
 						control={form.control}
 						name="avatar"
 						render={({ field }) => (
-							<FormItem>
+							<FormItem className="p-6 border border-input rounded-3xl bg-popover">
 								<FormLabel>Upload Profile Photo</FormLabel>
-								<FormControl>
+								<FormControl className="">
 									<>
-										<label className="border-2 border-dashed p-6 rounded-lg cursor-pointer flex flex-col items-center justify-center">
-											<UploadCloud className="w-10 h-10 text-gray-500" />
-											<span className="text-sm text-gray-500">
-												Drop or Click to Upload
-											</span>
+										<label className="border-4 border-upload bg-border p-6 rounded-[32px] cursor-pointer flex flex-col items-center justify-center size-60 mx-auto ">
+											<div className="flex flex-col items-center justify-center space-y-4">
+												<UploadCloud className="size-8 " />
+												<span className="text-center">
+													Drag & drop or click to
+													upload
+												</span>
+											</div>
 											<Input
 												type="file"
 												accept="image/*"
@@ -154,14 +157,18 @@ export default function AttendeeDetails() {
 							</FormItem>
 						)}
 					/>
-
-					<Button
-						type="submit"
-						disabled={!form.formState.isValid}
-						className="mt-4 w-full"
-					>
-						Submit
-					</Button>
+					<div className="flex flex-col sm:flex-row gap-4">
+						<Button
+							type="submit"
+							disabled={!form.formState.isValid}
+							className="w-full"
+						>
+							Get My Free Ticket
+						</Button>
+						<Button variant={"outline"} className="w-full">
+							Back
+						</Button>
+					</div>
 				</form>
 			</Form>
 		</div>

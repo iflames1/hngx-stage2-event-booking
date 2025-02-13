@@ -59,6 +59,7 @@ export default {
 					"5": "hsl(var(--chart-5))",
 				},
 				nav: "rgba(5, 37, 44, 0.40)",
+				upload: "rgba(36, 160, 181, 0.50)",
 			},
 			borderRadius: {
 				lg: "calc(var(--radius) + 2px)",
