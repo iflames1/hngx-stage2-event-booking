@@ -14,9 +14,10 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { UploadCloud } from "lucide-react";
+import { Loader2, UploadCloud } from "lucide-react";
 import { MdMailOutline } from "react-icons/md";
 import { Textarea } from "@/components/ui/textarea";
+import { db } from "@/lib/db";
 
 const formSchema = z.object({
 	name: z.string().min(2, "Name is required").max(100),
@@ -25,12 +26,17 @@ const formSchema = z.object({
 	specialRequest: z.string().optional(),
 });
 
-export default function AttendeeDetails() {
+export default function AttendeeDetails({
+	setStep,
+}: {
+	setStep: (step: number) => void;
+}) {
 	const [imagePreview, setImagePreview] = useState<string | null>(null);
 	//const [imagePreview, setImagePreview] = useState<string>(
 	//	"https://res.cloudinary.com/dapbvli1v/image/upload/v1739459686/dp_cc2rdu.jpg"
 	//);
 	const [isUploading, setIsUploading] = useState<boolean>(false);
+	const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
 	const form = useForm<FormData>({
 		resolver: zodResolver(formSchema),
@@ -50,7 +56,6 @@ export default function AttendeeDetails() {
 		const file = event.target.files?.[0];
 		if (!file) {
 			console.log("No file selected or unsupported file type.");
-			setIsUploading(false);
 			return;
 		}
 
@@ -92,12 +97,17 @@ export default function AttendeeDetails() {
 
 	type FormData = z.infer<typeof formSchema>;
 
-	const onSubmit = (data: FormData) => {
-		console.log("Form Submitted:", data);
+	const onSubmit = async (data: FormData) => {
+		setIsSubmitting(true);
+		try {
+			await db.event1.add(data);
+			setStep(3);
+		} catch (error) {
+			console.log(`Failed to save info: ${error}`);
+		} finally {
+			setIsSubmitting(false);
+		}
 	};
-
-	console.log(form.formState.errors);
-	console.log(form.getValues());
 
 	return (
 		<div className="sm:p-6 sm:border border-border rounded-[32px] sm:bg-[#08252B]">
@@ -201,14 +211,22 @@ export default function AttendeeDetails() {
 					<div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
 						<Button
 							type="submit"
-							disabled={!form.formState.isValid}
-							onClick={() => onSubmit}
+							disabled={!form.formState.isValid || isSubmitting}
 							className="w-full"
 						>
+							<Loader2
+								className={`animate-spin  ${
+									isSubmitting ? "inline-flex" : "hidden"
+								}`}
+							/>
 							Get My Free Ticket
 						</Button>
 
-						<Button variant={"outline"} className="w-full">
+						<Button
+							variant={"outline"}
+							className="w-full"
+							onClick={() => setStep(1)}
+						>
 							Back
 						</Button>
 					</div>

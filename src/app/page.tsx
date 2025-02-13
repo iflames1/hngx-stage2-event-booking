@@ -23,7 +23,7 @@ export default function Home() {
 						setStep={setStep}
 					/>
 				) : step === 2 ? (
-					<AttendeeDetails />
+					<AttendeeDetails setStep={setStep} />
 				) : step === 3 ? (
 					<Ticket />
 				) : null}
