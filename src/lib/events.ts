@@ -4,7 +4,7 @@ export interface Event {
 	eventDateTime: string;
 }
 
-const events = [
+const events: Event[] = [
 	{
 		eventName: "Techember Fest ’25",
 		eventLocation: "04 Rumens road, Ikoyi, Lagos",

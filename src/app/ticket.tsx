@@ -21,7 +21,6 @@ export default function Ticket({
 			if (data.length > 0) {
 				setEventData(data[data.length - 1]); // Use the first event
 			}
-			console.log(data);
 		};
 
 		fetchEventData();

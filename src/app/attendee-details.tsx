@@ -78,8 +78,6 @@ export default function AttendeeDetails({
 			return;
 		}
 
-		console.log("Uploading file:", file.name, file.type, file.size);
-
 		const formData = new FormData();
 		formData.append("file", file);
 		formData.append(
@@ -101,7 +99,6 @@ export default function AttendeeDetails({
 			}
 
 			const data = await response.json();
-			console.log("Upload successful:", data);
 
 			if (!data.secure_url) {
 				throw new Error("No secure_url returned from Cloudinary");
@@ -130,8 +127,6 @@ export default function AttendeeDetails({
 			setIsSubmitting(false);
 		}
 	};
-
-	console.log(form.formState.errors);
 
 	return (
 		<div className="sm:p-6 sm:border border-border rounded-[32px] sm:bg-[#08252B]">
