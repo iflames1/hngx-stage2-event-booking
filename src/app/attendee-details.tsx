@@ -27,6 +27,9 @@ const formSchema = z.object({
 	specialRequest: z.string().optional(),
 	seat: z.string(),
 	ticketNum: z.string(),
+	eventName: z.string(),
+	eventLocation: z.string(),
+	eventDateTime: z.string(),
 });
 
 interface AttendeeDetailsProps {
@@ -59,6 +62,9 @@ export default function AttendeeDetails({
 			specialRequest: "",
 			seat,
 			ticketNum,
+			eventName: event.eventName,
+			eventLocation: event.eventLocation,
+			eventDateTime: event.eventDateTime,
 		},
 	});
 
@@ -124,6 +130,8 @@ export default function AttendeeDetails({
 			setIsSubmitting(false);
 		}
 	};
+
+	console.log(form.formState.errors);
 
 	return (
 		<div className="sm:p-6 sm:border border-border rounded-[32px] sm:bg-[#08252B]">
@@ -243,7 +251,7 @@ export default function AttendeeDetails({
 									isSubmitting ? "inline-flex" : "hidden"
 								}`}
 							/>
-							Get My Free Ticket
+							Get My Ticket
 						</Button>
 
 						<Button
