@@ -27,8 +27,8 @@ const alatsi = Alatsi({
 });
 
 export const metadata: Metadata = {
-	title: "Event Manager",
-	description: "Number one event manager",
+	title: "Ticket Generator",
+	description: "Number one ticket manager",
 };
 
 export default function RootLayout({

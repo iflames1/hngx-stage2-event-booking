@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎟️ Ticket Generator
 
-## Getting Started
+## Overview
 
-First, run the development server:
+The **Ticket Generator** is a web application that allows users to browse events, fill out a form with their avatar, name, and email, and generate a personalized event ticket. Users can then download the ticket as an image for easy access and event entry.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+-   🗂 **Event Listing** – Users can browse a list of available events.
+-   📝 **Form Submission** – Collects user details (avatar, name, email) to personalize the ticket.
+-   🎟️ **Ticket Generation** – Generates a downloadable ticket with the user's details.
+-   📷 **Image Upload** – Users can upload an avatar to be displayed on the ticket.
+-   📥 **Downloadable Ticket** – Users can download their ticket as an image file.
+-   🔄 **Local Database** – Stores user-generated tickets using Dexie (IndexedDB).
+
+## 🚀 Tech Stack
+
+-   **Next.js 15** – Framework for server-side rendering and optimized frontend performance.
+-   **React 19** – UI library for component-based development.
+-   **Dexie.js** – IndexedDB wrapper for efficient local storage.
+-   **Tailwind CSS** – Utility-first CSS framework for responsive styling.
+-   **html2canvas** – Converts HTML elements into downloadable image files.
+
+## 📦 Dependencies
+
+```json
+"dependencies": {
+    "@hookform/resolvers": "^4.0.0",
+    "@radix-ui/react-label": "^2.1.2",
+    "@radix-ui/react-progress": "^1.1.2",
+    "@radix-ui/react-select": "^2.1.6",
+    "@radix-ui/react-slot": "^1.1.2",
+    "@radix-ui/react-tabs": "^1.1.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "dexie": "^4.0.11",
+    "dexie-react-hooks": "^1.1.7",
+    "html2canvas": "^1.4.1",
+    "lucide-react": "^0.475.0",
+    "next": "15.1.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
+    "react-icons": "^5.4.0",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.2"
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Installation & Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone the repository**
+    ```sh
+    git clone https://github.com/your-username/ticket-generator.git
+    cd ticket-generator
+    ```
+2. **Install dependencies**
+    ```sh
+    npm install
+    # or
+    yarn install
+    ```
+3. **Set up environment variables**
+   Create a `.env.local` file in the root directory and add:
+    ```env
+    NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET="your-upload-preset"
+    NEXT_PUBLIC_CLOUDINARY_USERNAME="your-cloudinary-username"
+    ```
+4. **Run the development server**
+    ```sh
+    npm run dev
+    ```
+    The app will be available at [http://localhost:3000](http://localhost:3000).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎨 Usage
 
-## Learn More
+1. Browse through the available events.
+2. Click on an event to proceed to the ticket booking form.
+3. Upload your avatar, enter your name and email.
+4. Submit the form to generate your ticket.
+5. Download your ticket for future use.
 
-To learn more about Next.js, take a look at the following resources:
+## 📌 Future Enhancements
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-   🎫 **QR Code Integration** – Add a scannable QR code for event check-ins.
+-   💳 **Payment Integration** – Allow paid ticket purchases via Stripe, Paystack, or Flutterwave.
+-   🔐 **User Authentication** – Enable user accounts to manage bookings.
+-   📨 **Email Confirmation** – Send tickets directly to users via email.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🤝 Contributing
 
-## Deploy on Vercel
+Pull requests are welcome! If you have ideas for improvements, feel free to fork the repo and submit a PR.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+💡 **Built with passion by Flames**
