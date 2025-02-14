@@ -18,6 +18,7 @@ import { Loader2, UploadCloud } from "lucide-react";
 import { MdMailOutline } from "react-icons/md";
 import { Textarea } from "@/components/ui/textarea";
 import { db } from "@/lib/db";
+import { Event } from "@/lib/events";
 
 const formSchema = z.object({
 	name: z.string().min(2, "Name is required").max(100),
@@ -32,12 +33,14 @@ interface AttendeeDetailsProps {
 	setStep: (step: number) => void;
 	seat: string;
 	ticketNum: string;
+	event: Event;
 }
 
 export default function AttendeeDetails({
 	setStep,
 	seat,
 	ticketNum,
+	event,
 }: AttendeeDetailsProps) {
 	const [imagePreview, setImagePreview] = useState<string | null>(null);
 	//const [imagePreview, setImagePreview] = useState<string>(

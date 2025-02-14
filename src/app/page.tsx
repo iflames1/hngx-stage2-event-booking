@@ -33,6 +33,7 @@ export default function Home() {
 						setStep={setStep}
 						seat={selectedSeat}
 						ticketNum={ticketNum}
+						event={event}
 					/>
 				) : step === 3 ? (
 					<Ticket setStep={setStep} />
