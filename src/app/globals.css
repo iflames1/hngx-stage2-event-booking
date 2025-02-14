@@ -63,6 +63,13 @@
 		padding-left: 1.5rem;
 	}
 
+	input:-webkit-autofill {
+		background-color: transparent !important;
+		-webkit-text-fill-color: white !important;
+		-webkit-box-shadow: 0 0 0px 1000px var(--background) inset !important;
+		transition: background-color 5000s ease-in-out 0s;
+	}
+
 	.banner {
 		background: radial-gradient(
 				57.42% 106.59% at 14.02% 32.06%,
