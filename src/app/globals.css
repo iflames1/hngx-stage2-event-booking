@@ -48,6 +48,21 @@
 		background-size: cover;
 		min-height: 100svh;
 	}
+	ul {
+		list-style-type: disc;
+		padding-left: 1.5rem;
+	}
+
+	ul ul {
+		list-style-type: circle;
+		padding-left: 1.5rem;
+	}
+
+	ul ul ul {
+		list-style-type: square;
+		padding-left: 1.5rem;
+	}
+
 	.banner {
 		background: radial-gradient(
 				57.42% 106.59% at 14.02% 32.06%,

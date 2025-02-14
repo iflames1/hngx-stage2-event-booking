@@ -6,7 +6,7 @@ import TicketProgress from "./ticket-progress";
 import Ticket from "./ticket";
 
 export default function Home() {
-	const [step, setStep] = useState(1); // Track step count (1 to 3)
+	const [step, setStep] = useState(1);
 	const [selectedSeat, setSelectedSeat] = useState("free");
 	const [ticketNum, setTicketNum] = useState("1");
 
