@@ -23,18 +23,21 @@ export default function Events({ setStep, setEvent }: EventsProps) {
 								📍 {event.eventLocation}
 							</span>
 							<span className="hidden sm:inline-flex">| |</span>
-							<span>{event.eventDateTime}</span>
+							<span className="truncate overflow-hidden">
+								{event.eventDateTime}
+							</span>
 						</p>
 					</div>
-					<Button
-						onClick={() => {
-							setEvent(event);
-							setStep(1);
-						}}
-						className="mt-2 w-full sm:w-auto"
-					>
-						Get Ticket
-					</Button>
+					<div className="flex justify-end">
+						<Button
+							onClick={() => {
+								setEvent(event);
+								setStep(1);
+							}}
+						>
+							Get Ticket
+						</Button>
+					</div>
 				</div>
 			))}
 		</div>
