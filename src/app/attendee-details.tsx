@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -51,6 +51,7 @@ export default function AttendeeDetails({
 	//);
 	const [isUploading, setIsUploading] = useState<boolean>(false);
 	const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+	const inputRef = useRef<HTMLInputElement>(null);
 
 	const form = useForm<FormData>({
 		resolver: zodResolver(formSchema),
@@ -201,9 +202,14 @@ export default function AttendeeDetails({
 							<FormItem>
 								<FormLabel>Enter Your Email *</FormLabel>
 								<FormControl>
-									<div className="flex w-full items-center rounded-xl border border-input bg-transparent p-3 transition-colors focus-within:ring-1 focus-within:ring-ring">
+									<div
+										className="flex w-full items-center rounded-xl border border-input bg-transparent p-3 transition-colors focus-within:ring-1 focus-within:ring-ring"
+										onClick={() =>
+											inputRef.current?.focus()
+										}
+									>
 										<MdMailOutline
-											className="size-6 focus:outline-none focus:ring-0"
+											className="size-6 focus:outline-none focus:ring-0 "
 											tabIndex={-1}
 										/>
 										<Input
@@ -211,6 +217,7 @@ export default function AttendeeDetails({
 											{...field}
 											placeholder="johndeo@gmail.com"
 											className="border-none p-0 pl-2 flex-1 bg-transparent focus-visible:ring-0"
+											ref={inputRef}
 										/>
 									</div>
 								</FormControl>

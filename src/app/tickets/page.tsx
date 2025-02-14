@@ -60,11 +60,11 @@ export default function TicketPage() {
 						My Tickets
 					</h1>
 					{tickets?.map((ticket) => (
-						<div key={ticket.id}>
+						<div key={ticket.id} className="space-y-3 sm:space-y-0">
 							<div ref={ticketRef}>
 								<TicketPreview eventData={ticket} />
 							</div>
-							<div className="w-full flex flex-col sm:flex-row gap-4 sm:gap-6 font-jeju max-w-[300px] mx-auto">
+							<div className="w-full flex flex-col sm:flex-row gap-2 sm:gap-6 font-jeju max-w-[300px] mx-auto">
 								<Button
 									className="w-full"
 									disabled={downloadingId === ticket.id}

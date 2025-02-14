@@ -24,7 +24,7 @@ export default function Events({ setStep, setEvent }: EventsProps) {
 							</span>
 							<span className="hidden sm:inline-flex">| |</span>
 							<span className="truncate overflow-hidden">
-								{event.eventDateTime}
+								📅 {event.eventDateTime}
 							</span>
 						</p>
 					</div>

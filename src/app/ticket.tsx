@@ -65,7 +65,7 @@ export default function Ticket({
 			</div>
 			<div className="w-full flex flex-col sm:flex-row gap-4 sm:gap-6 font-jeju">
 				<Button
-					onClick={() => setStep(1)}
+					onClick={() => setStep(0)}
 					variant={"outline"}
 					className="w-full"
 				>

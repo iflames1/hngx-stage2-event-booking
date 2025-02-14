@@ -29,13 +29,13 @@ export default function TicketSelection({
 						{event.eventName}
 					</h2>
 					<p className="font-roboto text-sm sm:text-base font-normal leading-[150%] sm:max-w-[340px] mx-auto">
-						Join us for an unforgettable experience at
+						Join us for an unforgettable experience at{" "}
 						{event.eventName}! Secure your spot now.
 					</p>
 				</div>
-				<p className="font-roboto text-base font-normal leading-[150%] flex flex-col sm:flex-row justify-center gap-1 sm:gap-4">
+				<p className="font-roboto text-base font-normal leading-[150%] flex flex-col md:flex-row justify-center gap-1 md:gap-4">
 					<span>📍 {event.eventLocation}</span>
-					<span className="hidden sm:inline-flex">| |</span>
+					<span className="hidden md:inline-flex">| |</span>
 					<span>${event.eventDateTime}</span>
 				</p>
 			</div>
