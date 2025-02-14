@@ -49,6 +49,7 @@ export default function TicketSelection({
 				<Button
 					variant={"outline"}
 					className="w-full text-primary leading-[150%]"
+					onClick={() => setStep(0)}
 				>
 					Cancel
 				</Button>
