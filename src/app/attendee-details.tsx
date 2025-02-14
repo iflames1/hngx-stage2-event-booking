@@ -134,7 +134,7 @@ export default function AttendeeDetails({
 						name="avatar"
 						render={({}) => (
 							<FormItem className="p-6 pb-12 space-y-8 border border-input rounded-3xl bg-popover">
-								<FormLabel>Upload Profile Photo</FormLabel>
+								<FormLabel>Upload Profile Photo *</FormLabel>
 								<FormControl className="">
 									<div className="sm:bg-black/20 flex justify-center items-center w-full h-[200px]">
 										<label className="border-4 border-upload bg-border rounded-[32px] cursor-pointer flex flex-col items-center justify-center size-60 mx-auto">
@@ -175,9 +175,13 @@ export default function AttendeeDetails({
 						name="name"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel>Enter Your Name</FormLabel>
+								<FormLabel>Enter Your Name *</FormLabel>
 								<FormControl>
-									<Input {...field} type="text" />
+									<Input
+										{...field}
+										type="text"
+										placeholder="John Deo"
+									/>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -199,6 +203,7 @@ export default function AttendeeDetails({
 										<Input
 											type="email"
 											{...field}
+											placeholder="johndeo@gmail.com"
 											className="border-none p-0 pl-2 flex-1 bg-transparent focus-visible:ring-0"
 										/>
 									</div>
@@ -213,9 +218,12 @@ export default function AttendeeDetails({
 						name="specialRequest"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel>Special Request?</FormLabel>
+								<FormLabel>Special Request</FormLabel>
 								<FormControl>
-									<Textarea {...field} />
+									<Textarea
+										{...field}
+										placeholder="Type a request"
+									/>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
