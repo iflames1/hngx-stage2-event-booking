@@ -18,6 +18,7 @@ import { Loader2, UploadCloud } from "lucide-react";
 import { MdMailOutline } from "react-icons/md";
 import { Textarea } from "@/components/ui/textarea";
 import { db } from "@/lib/db";
+import { Event } from "@/lib/events";
 
 const formSchema = z.object({
 	name: z.string().min(2, "Name is required").max(100),
@@ -26,18 +27,23 @@ const formSchema = z.object({
 	specialRequest: z.string().optional(),
 	seat: z.string(),
 	ticketNum: z.string(),
+	eventName: z.string(),
+	eventLocation: z.string(),
+	eventDateTime: z.string(),
 });
 
 interface AttendeeDetailsProps {
 	setStep: (step: number) => void;
 	seat: string;
 	ticketNum: string;
+	event: Event;
 }
 
 export default function AttendeeDetails({
 	setStep,
 	seat,
 	ticketNum,
+	event,
 }: AttendeeDetailsProps) {
 	const [imagePreview, setImagePreview] = useState<string | null>(null);
 	//const [imagePreview, setImagePreview] = useState<string>(
@@ -56,6 +62,9 @@ export default function AttendeeDetails({
 			specialRequest: "",
 			seat,
 			ticketNum,
+			eventName: event.eventName,
+			eventLocation: event.eventLocation,
+			eventDateTime: event.eventDateTime,
 		},
 	});
 
@@ -68,8 +77,6 @@ export default function AttendeeDetails({
 			console.log("No file selected or unsupported file type.");
 			return;
 		}
-
-		console.log("Uploading file:", file.name, file.type, file.size);
 
 		const formData = new FormData();
 		formData.append("file", file);
@@ -92,7 +99,6 @@ export default function AttendeeDetails({
 			}
 
 			const data = await response.json();
-			console.log("Upload successful:", data);
 
 			if (!data.secure_url) {
 				throw new Error("No secure_url returned from Cloudinary");
@@ -240,7 +246,7 @@ export default function AttendeeDetails({
 									isSubmitting ? "inline-flex" : "hidden"
 								}`}
 							/>
-							Get My Free Ticket
+							Get My Ticket
 						</Button>
 
 						<Button

@@ -7,20 +7,6 @@ interface TicketPreviewProps {
 }
 
 export default function TicketPreview({ eventData }: TicketPreviewProps) {
-	//const [eventData, setEventData] = useState<Event1 | null>(null);
-
-	//useEffect(() => {
-	//	const fetchEventData = async () => {
-	//		const data = await db.event1.toArray(); // Fetch all events
-	//		if (data.length > 0) {
-	//			setEventData(data[data.length - 1]); // Use the first event
-	//		}
-	//		console.log(data);
-	//	};
-
-	//	fetchEventData();
-	//}, []);
-
 	return (
 		<>
 			{eventData ? (
@@ -29,11 +15,11 @@ export default function TicketPreview({ eventData }: TicketPreviewProps) {
 						<div className="border border-primary rounded-2xl bg-ticket backdrop:blur-[2px] p-[14px] space-y-5">
 							<div className="text-center">
 								<h1 className="font-road text-[34px] leading-[100%]">
-									Techember Fest ”25
+									{eventData.eventName}
 								</h1>
 								<div className="p-1 space-y-1 text-[10px] leading-[150%]">
-									<p>📍 04 Rumens road, Ikoyi, Lagos</p>
-									<p>📅 March 15, 2025 | 7:00 PM</p>
+									<p>📍 {eventData.eventLocation}</p>
+									<p>📅 {eventData.eventDateTime}</p>
 								</div>
 							</div>
 
